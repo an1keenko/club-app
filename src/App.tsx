@@ -10,6 +10,7 @@ import { firebaseConfig } from "./constants/firebaseConfig.ts";
 
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { Header } from "./components/layout/Header/Header.tsx";
 
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
@@ -27,17 +28,17 @@ const theme = createTheme({
 });
 
 function App() {
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      signInWithRedirect(auth, provider);
-    }
-  });
+  // onAuthStateChanged(auth, (user) => {
+  //   if (!user) {
+  //     signInWithRedirect(auth, provider);
+  //   }
+  // });
 
   return (
     <>
       <MantineProvider theme={theme}>
-        Test
-        <button onClick={() => signOut(auth)}>log out</button>
+        <Header />
+        {/*<button onClick={() => signOut(auth)}>log out</button>*/}
       </MantineProvider>
     </>
   );
